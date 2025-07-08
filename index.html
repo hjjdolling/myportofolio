@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portofolio Abyan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #f6fbff;
+            --accent: #b3e0ff;
+            --text: #222;
+            --button: #e3f2fd;
+            --button-hover: #90caf9;
+            --border: #e0e7ef;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2rem 5vw 1rem 5vw;
+            background: linear-gradient(90deg, var(--primary) 80%, var(--accent) 100%);
+            border-bottom: 1px solid var(--border);
+        }
+        .profile-pic {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent);
+            box-shadow: 0 2px 8px rgba(179,224,255,0.2);
+        }
+        .intro {
+            margin-left: 1.5rem;
+            flex: 1;
+        }
+        .intro h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1976d2;
+        }
+        .intro p {
+            font-size: 1rem;
+            color: #444;
+            margin-top: 0.5rem;
+        }
+        nav {
+            display: flex;
+            gap: 1rem;
+        }
+        nav a {
+            text-decoration: none;
+            color: #1976d2;
+            background: var(--button);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 500;
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+            border: 1px solid transparent;
+        }
+        nav a:hover {
+            background: var(--button-hover);
+            color: #fff;
+            transform: translateY(-2px) scale(1.05);
+            border: 1px solid #90caf9;
+            box-shadow: 0 2px 8px rgba(144,202,249,0.15);
+        }
+        main {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 5vw;
+        }
+        section {
+            margin-bottom: 2.5rem;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 2px 12px rgba(179,224,255,0.08);
+            padding: 2rem;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+        section h2 {
+            color: #1976d2;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        /* Estetika tambahan */
+        .decor {
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent) 60%, transparent 100%);
+            border-radius: 50%;
+            opacity: 0.18;
+            z-index: 0;
+        }
+        /* Pendidikan */
+        .edu-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .edu-list li {
+            margin-bottom: 0.7rem;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+        .edu-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5em;
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+        /* Portofolio */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.2rem;
+            margin-top: 1rem;
+        }
+        .portfolio-item {
+            background: var(--button);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 6px rgba(179,224,255,0.10);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            border: 1px solid var(--border);
+            position: relative;
+        }
+        .portfolio-item:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 4px 16px rgba(144,202,249,0.18);
+            border: 1px solid #90caf9;
+        }
+        .portfolio-item img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            display: block;
+        }
+        .portfolio-item .caption {
+            padding: 0.7rem 1rem;
+            font-size: 1rem;
+            color: #1976d2;
+            font-weight: 500;
+        }
+        /* Kontak */
+        .contact-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            margin-top: 1rem;
+        }
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: #1976d2;
+            background: var(--button);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 500;
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+            border: 1px solid transparent;
+            font-size: 1rem;
+        }
+        .contact-link:hover {
+            background: var(--button-hover);
+            color: #fff;
+            transform: translateY(-2px) scale(1.05);
+            border: 1px solid #90caf9;
+            box-shadow: 0 2px 8px rgba(144,202,249,0.15);
+        }
+        .contact-link svg {
+            width: 22px;
+            height: 22px;
+            fill: #1976d2;
+            transition: fill 0.2s;
+        }
+        .contact-link:hover svg {
+            fill: #fff;
+        }
+        /* Responsive */
+        @media (max-width: 700px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+                padding: 1.2rem 5vw;
+            }
+            .intro h1 {
+                font-size: 1.3rem;
+            }
+            main {
+                padding: 0 2vw;
+            }
+            section {
+                padding: 1.2rem;
+            }
+        }
+        @media (max-width: 500px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-links {
+                flex-direction: column;
+                gap: 0.7rem;
+                align-items: flex-start;
+            }
+            .profile-pic {
+                width: 55px;
+                height: 55px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="foto-anda.jpg" alt="Foto Abyan" class="profile-pic">
+        <div class="intro">
+            <h1>Halo, saya Aufha Abyan Naufhal</h1>
+            <p>Saya seorang siswa SMKN 1 cibadak dengan bidang kompetensi DKV. Saya suka membangun solusi digital yang efektif dan estetis.</p>
+        </div>
+        <nav>
+            <a href="#pendidikan">Pendidikan</a>
+            <a href="#portofolio">Portofolio</a>
+            <a href="#kontak">Kontak</a>
+        </nav>
+    </header>
+    <main>
+        <section id="pendidikan">
+            <div class="decor"></div>
+            <h2>Pendidikan</h2>
+            <ul class="edu-list">
+                <li>SMPN 1 CIBADAK</li>
+                <li>SMKN 1 CIBADAK</li>
+            </ul>
+        </section>
+        <section id="portofolio">
+            <div class="decor"></div>
+            <h2>Portofolio</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="project1.jpg" alt="Project 1">
+                    <div class="caption">UI App design virtual Doctor Counsultation.</div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="project2.jpg" alt="Project 2">
+                    <div class="caption">UI App design food</div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="project3.jpg" alt="Project 3">
+                    <div class="caption">Landing Page</div>
+                </div>
+                
+            </div>
+        </section>
+        <section id="kontak">
+            <div class="decor"></div>
+            <h2>Kontak Saya</h2>
+            <div class="contact-links">
+                <a class="contact-link" href="https://www.instagram.com/dsg.xviiinaufhal?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm4.25 3.25a5.25 5.25 0 1 1 0 10.5 5.25 5.25 0 0 1 0-10.5zm0 1.5a3.75 3.75 0 1 0 0 7.5 3.75 3.75 0 0 0 0-7.5zm5.25 1.25a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
+                    Instagram
+                </a>
+                <a class="contact-link" href="https://wa.me/6285759840740" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M20.52 3.48A11.87 11.87 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.16 1.6 5.97L0 24l6.19-1.62A11.93 11.93 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.19-1.24-6.19-3.48-8.52zM12 22c-1.85 0-3.67-.5-5.25-1.44l-.38-.22-3.67.96.98-3.58-.25-.37A9.94 9.94 0 0 1 2 12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10zm5.2-7.8c-.28-.14-1.65-.81-1.9-.9-.25-.09-.43-.14-.61.14-.18.28-.7.9-.86 1.08-.16.18-.32.2-.6.07-.28-.14-1.18-.44-2.25-1.4-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.57.13-.13.28-.34.42-.51.14-.17.18-.29.27-.48.09-.19.05-.36-.02-.5-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47-.16-.01-.35-.01-.54-.01-.19 0-.5.07-.76.34-.26.27-1 1-1 2.43 0 1.43 1.03 2.81 1.17 3 .14.19 2.03 3.1 4.93 4.23.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.12.56-.08 1.65-.67 1.88-1.32.23-.65.23-1.2.16-1.32-.07-.12-.25-.19-.53-.33z"/></svg>
+                    WhatsApp
+                </a>
+            </div>
+        </section>
+    </main>
+</body>
+</html></a></div></section></ul>
